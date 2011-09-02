@@ -1,0 +1,25 @@
+[Desktop Entry]
+X-KDE-Library=ktexteditor_quickpicture
+X-KDE-PluginKeyword=ktexteditor_quickpicture
+X-KDE-PluginInfo-Author=Nikolay Sokolov
+X-KDE-PluginInfo-Email=chemikadze@gmail.com
+X-KDE-PluginInfo-Name=ktexteditor_quickpicture
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=
+X-KDE-PluginInfo-Category=Editor
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=false
+X-KDE-ParentApp=kate
+X-KDE-Version=4.0
+X-KDE-ServiceTypes=KTextEditor/Plugin
+Type=Service
+Icon=quickpicture
+Name=QuickPicture
+Name[en_GB]=QuickPicture
+Name[ru]=Быстрая вставка изображений
+Name[x-test]=xxAutoBracexx
+Comment=Save and automatic insert images from web-camera
+Comment[en_GB]=Save and automatic insert images from web-camera
+Comment[ru]=Сохранение и автоматическое подключение изображений с веб-камеры
+

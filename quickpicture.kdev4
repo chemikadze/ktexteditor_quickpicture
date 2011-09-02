@@ -1,0 +1,4 @@
+[Project]
+Name=quickpicture
+Manager=KDevCMakeManager
+VersionControl=kdevgit
