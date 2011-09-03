@@ -30,6 +30,8 @@
 #include <ktexteditor/document.h>
 #include <kpluginfactory.h>
 
+class Controller;
+
 class QuickPicturePlugin
     : public KTextEditor::Plugin
 {
@@ -47,6 +49,8 @@ class QuickPicturePlugin
 
     virtual void readConfig (KConfig *) {}
     virtual void writeConfig (KConfig *) {}
+    
+    Controller* createController(KTextEditor::View*);
 
   private:
     QList<class QuickPicturePluginView*> m_views;
@@ -58,8 +62,6 @@ class QuickPicturePluginView : public QObject, public KXMLGUIClient
   public:
     explicit QuickPicturePluginView( KTextEditor::View *view, const char *name=0 );
     ~QuickPicturePluginView() {}
-  private:
-    void insertFile();
 };
 
 K_PLUGIN_FACTORY_DECLARATION(QuickPicturePluginFactory)

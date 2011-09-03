@@ -32,6 +32,8 @@
 #include <kconfiggroup.h>
 #include <kaboutdata.h>
 
+#include <simple_controller.h>
+
 K_PLUGIN_FACTORY_DEFINITION(QuickPicturePluginFactory,
         registerPlugin<QuickPicturePlugin>("ktexteditor_quickpicture");
         )
@@ -50,6 +52,9 @@ void QuickPicturePlugin::addView(KTextEditor::View *view)
 {
     QuickPicturePluginView *nview = new QuickPicturePluginView (view, "Insert File Plugin");
     m_views.append (nview);
+	Controller* controller = createController(view);
+	QAction* action = nview->actionCollection()->action("tools_insert_picture");
+	connect(action, SIGNAL(triggered(bool)), controller, SLOT(requestInserting()));
 }
 
 void QuickPicturePlugin::removeView(KTextEditor::View *view)
@@ -58,14 +63,14 @@ void QuickPicturePlugin::removeView(KTextEditor::View *view)
     // Loop written for the unlikely case of a view being added more than once
     while (z < m_views.count())
     {
-      QuickPicturePluginView *nview = m_views.at(z);
-      if (nview->parentClient() == view)
-      {
-         m_views.removeAll (nview);
-         delete nview;
-      }
-      else
-         ++z;
+        QuickPicturePluginView *nview = m_views.at(z);
+        if (nview->parentClient() == view)
+        {
+            m_views.removeAll (nview);
+            delete nview;
+        }
+        else
+            ++z;
     }
 }
 
@@ -82,7 +87,10 @@ void QuickPicturePlugin::writeConfig()
     // cg.writeEntry("name", value);
 }
 
-/// QuickPicturePluginDocument
+Controller* QuickPicturePlugin::createController(KTextEditor::View* view)
+{
+	return new SimpleController(view);
+}
 
 QuickPicturePluginView::QuickPicturePluginView( KTextEditor::View *view, const char *name )
   : QObject( view ),

@@ -6,7 +6,11 @@ include_directories(${QT_INCLUDE_DIR})
 find_package(KDE4 4.2.0 REQUIRED)
 include(KDE4Defaults)
 
-set(quickpicture_PART_SRCS quickpicture.cpp)
+set(quickpicture_PART_SRCS 
+	quickpicture.cpp
+	simple_controller.cpp
+	controller.cpp
+)
 
 kde4_add_plugin(ktexteditor_quickpicture ${quickpicture_PART_SRCS} )
 
