@@ -1,4 +1,4 @@
 [Project]
-Name=quickpicture
 Manager=KDevCMakeManager
+Name=ktexteditor_quickpicture
 VersionControl=kdevgit

@@ -32,7 +32,7 @@
 #include <kconfiggroup.h>
 #include <kaboutdata.h>
 
-#include <simple_controller.h>
+#include "directcameraaccesscontroller.h"
 
 K_PLUGIN_FACTORY_DEFINITION(QuickPicturePluginFactory,
         registerPlugin<QuickPicturePlugin>("ktexteditor_quickpicture");
@@ -89,7 +89,7 @@ void QuickPicturePlugin::writeConfig()
 
 Controller* QuickPicturePlugin::createController(KTextEditor::View* view)
 {
-	return new SimpleController(view);
+	return new DirectCameraAccessController(view);
 }
 
 QuickPicturePluginView::QuickPicturePluginView( KTextEditor::View *view, const char *name )
