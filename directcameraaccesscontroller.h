@@ -22,6 +22,7 @@
 #define DIRECTCAMERAACCESSCONTROLLER_H
 
 #include <QtGui/QDialog>
+#include <QtCore/QTime>
 #include <auto_ptr.h>
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
@@ -73,18 +74,28 @@ public Q_SLOTS:
 	void capture();
 	void saveImage();
 	void saveAndStop();
+	
+	void startShotTimer();
+	void updateShotTimer();
+	void resetShotTimer(QTime start = QTime(0, 0, 10));
+	void updateTimeoutButton();
 
 private:
 	void timerEvent(QTimerEvent*);
 	
-	int m_timer_id;
-	int m_captured;
+	bool m_captured;
+	int m_frame_timer_id;
+	int m_timeout_timer_id;
 	QImage m_image;
 	std::auto_ptr<VideoCapture> m_cap;
+	QTime m_timeout;         // timeout of shot timer
+	QTime m_single_timeout;  // refresh of shot timer
+	QTime m_default_timeout; // start shot timer
 	
 	QLineEdit *m_filename_edit;
 	QLabel *m_captured_image;
 	QPushButton *m_capture_button;
+	QPushButton *m_timeout_button;
 	QDialogButtonBox *m_buttons;
 };
 
